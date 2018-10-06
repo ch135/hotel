@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hotel.dao.OrderInformationDao" >
+  <resultMap id="BaseResultMap" type="com.hotel.model.OrderInformation" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="house_number" property="houseNumber" jdbcType="VARCHAR" />
+    <result column="house_type" property="houseType" jdbcType="TINYINT" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="in_time" property="inTime" jdbcType="DATE" />
+    <result column="out_time" property="outTime" jdbcType="DATE" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="offer_money" property="offerMoney" jdbcType="DECIMAL" />
+    <result column="back_money" property="backMoney" jdbcType="DECIMAL" />
+    <result column="house_status" property="houseStatus" jdbcType="TINYINT" />
+    <result column="gmt_cteat" property="gmtCteat" jdbcType="TIMESTAMP" />
+    <result column="gmt_modeify" property="gmtModeify" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, house_number, house_type, account, name, telephone, in_time, out_time, status, 
+    offer_money, back_money, house_status, gmt_cteat, gmt_modeify
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_information
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from order_information
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hotel.model.OrderInformation" >
+    insert into order_information (id, house_number, house_type, 
+      account, name, telephone, 
+      in_time, out_time, status, 
+      offer_money, back_money, house_status, 
+      gmt_cteat, gmt_modeify)
+    values (#{id,jdbcType=INTEGER}, #{houseNumber,jdbcType=VARCHAR}, #{houseType,jdbcType=TINYINT}, 
+      #{account,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+      #{inTime,jdbcType=DATE}, #{outTime,jdbcType=DATE}, #{status,jdbcType=TINYINT}, 
+      #{offerMoney,jdbcType=DECIMAL}, #{backMoney,jdbcType=DECIMAL}, #{houseStatus,jdbcType=TINYINT}, 
+      #{gmtCteat,jdbcType=TIMESTAMP}, #{gmtModeify,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hotel.model.OrderInformation" >
+    insert into order_information
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="houseNumber != null" >
+        house_number,
+      </if>
+      <if test="houseType != null" >
+        house_type,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="inTime != null" >
+        in_time,
+      </if>
+      <if test="outTime != null" >
+        out_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="offerMoney != null" >
+        offer_money,
+      </if>
+      <if test="backMoney != null" >
+        back_money,
+      </if>
+      <if test="houseStatus != null" >
+        house_status,
+      </if>
+      <if test="gmtCteat != null" >
+        gmt_cteat,
+      </if>
+      <if test="gmtModeify != null" >
+        gmt_modeify,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="houseNumber != null" >
+        #{houseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="houseType != null" >
+        #{houseType,jdbcType=TINYINT},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="inTime != null" >
+        #{inTime,jdbcType=DATE},
+      </if>
+      <if test="outTime != null" >
+        #{outTime,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="offerMoney != null" >
+        #{offerMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="backMoney != null" >
+        #{backMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="houseStatus != null" >
+        #{houseStatus,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCteat != null" >
+        #{gmtCteat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModeify != null" >
+        #{gmtModeify,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hotel.model.OrderInformation" >
+    update order_information
+    <set >
+      <if test="houseNumber != null" >
+        house_number = #{houseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="houseType != null" >
+        house_type = #{houseType,jdbcType=TINYINT},
+      </if>
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="inTime != null" >
+        in_time = #{inTime,jdbcType=DATE},
+      </if>
+      <if test="outTime != null" >
+        out_time = #{outTime,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="offerMoney != null" >
+        offer_money = #{offerMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="backMoney != null" >
+        back_money = #{backMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="houseStatus != null" >
+        house_status = #{houseStatus,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCteat != null" >
+        gmt_cteat = #{gmtCteat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModeify != null" >
+        gmt_modeify = #{gmtModeify,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hotel.model.OrderInformation" >
+    update order_information
+    set house_number = #{houseNumber,jdbcType=VARCHAR},
+      house_type = #{houseType,jdbcType=TINYINT},
+      account = #{account,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      in_time = #{inTime,jdbcType=DATE},
+      out_time = #{outTime,jdbcType=DATE},
+      status = #{status,jdbcType=TINYINT},
+      offer_money = #{offerMoney,jdbcType=DECIMAL},
+      back_money = #{backMoney,jdbcType=DECIMAL},
+      house_status = #{houseStatus,jdbcType=TINYINT},
+      gmt_cteat = #{gmtCteat,jdbcType=TIMESTAMP},
+      gmt_modeify = #{gmtModeify,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+   <select id="getOrderByStatus" resultType="com.hotel.model.OrderInformation" parameterType="java.lang.Byte">
+    select
+    <include refid="Base_Column_List" />
+    from order_information
+        where 
+    house_status = #{houseStatus,jdbcType=TINYINT}
+  </select>
+
+  <select id="getHouseByDate" resultType="java.lang.String">
+    select house_number from  order_information
+        where
+    gmt_cteat between #{0} and #{1} and house_status=1 and house_type=#{2} 
+    group by house_number HAVING count(*)>=#{3}
+  </select>
+</mapper>
